@@ -2,10 +2,8 @@ import random
 import tkinter as tk
 from itertools import count
 
-
-
 class ImageLabel(tk.Label):
-    #imagem na janela
+    #image on window
     def load(self, im):
         self.im = im
         self.frames = []
@@ -29,11 +27,19 @@ class ImageLabel(tk.Label):
 
 #abri janela
 window = tk.Tk()
-lbl =  ImageLabel(window)
+
+#background
+TRANSPARENT_COLOR = "magenta"
+window.config(bg=TRANSPARENT_COLOR)
+window.wm_attributes('-transparentcolor', TRANSPARENT_COLOR)
+
+lbl =  ImageLabel(window, bg=TRANSPARENT_COLOR)
 lbl.pack() 
 lbl.load('C:\\Users\\al795\\Downloads\\cat.gif')   #carregar ficheiro
 
+#window transparent
+window.overrideredirect(True)
+
+
 #loop
 window.mainloop()
-
-#janela abrir no canto TODO
